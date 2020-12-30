@@ -304,7 +304,6 @@ def get_jetson_gstreamer_source(capture_width=1280, capture_height=720, display_
 
 def do_text_recognition(pyb):
     global video_capture
-    process_this_frame = True
 
     # Accessing the camera with OpenCV on a Jetson Nano requires gstreamer with a custom gstreamer source string
     video_capture = cv2.VideoCapture(get_jetson_gstreamer_source(), cv2.CAP_GSTREAMER)
@@ -326,7 +325,7 @@ def do_text_recognition(pyb):
 
         command = 'import hub\nprint(hub.status()["port"]["C"])'
         test_result = pyb.exec(command)
-        check_distance = re.search(r"\[([0-9]+)\]", str(test_result))
+        check_distance = re.search(r"\[([0-9]+)]", str(test_result))
         if check_distance and int(check_distance.group(1)) < 20:
             text = pytesseract.image_to_string(adjusted, lang="chi-sim")
             formatted_text = text.replace("\n", "").strip()
