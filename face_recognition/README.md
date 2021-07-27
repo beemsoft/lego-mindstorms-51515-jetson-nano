@@ -38,8 +38,39 @@ sudo pip3 install pyserial
 ```
 ### OpenCV
 The Jetson Nano 2GB is provided with a pre-installed software package (JetPack 4.4).
-One of the many AI libraries is [OpenCV](https://opencv.org/). 
-In this demo, OpenCV is only used for capturing and enhancing video frames. 
+One of the many AI libraries is [OpenCV](https://opencv.org/). By default, the OpenCV installation is not CUDA enabled:
+
+```python
+$ python3
+>>> import cv2
+>>> print(cv2.__version__)
+4.1.1
+>>> print(cv2.cuda.getCudaEnabledDeviceCount())
+0
+```
+
+In this demo, OpenCV is only used for capturing images. For face recognition, we will use the face_recognition library
+("The world's simplest facial recognition api").
+
+### face_recognition and dlib
+
+This library uses [dlib](http://dlib.net/), which is CUDA enabled by default
+
+```
+sudo apt-get install cmake libopenblas-dev liblapack-dev libjpeg-dev
+sudo pip3 install Cython face_recognition
+```
+> The installation of dlib can take almost one hour on the Jetson Nano.
+
+After installation, check whether the dlib library is CUDA enabled:
+```python
+$ python3
+>>> import dlib
+>>> dlib.DLIB_USE_CUDA
+True
+>>> print(dlib.cuda.get_num_devices())
+1
+```
 
 ### Text-to-speech
 For this demo, the Google Cloud Speech API has been used:
