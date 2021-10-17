@@ -62,7 +62,7 @@ class Pyboard:
                     sys.stdout.write("Waiting {} seconds for pyboard ".format(wait))
                     delayed = True
             time.sleep(1)
-            sys.stdout.write(".")
+            sys.stdout.write("..")
             sys.stdout.flush()
         else:
             if delayed:
