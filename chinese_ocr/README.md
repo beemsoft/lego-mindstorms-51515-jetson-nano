@@ -1,54 +1,3 @@
-# LEGO Mindstorms 51515 with NVIDIA Jetson Nano
-
-This project combines the [LEGO Mindstorms 51515](https://www.lego.com/en-us/product/robot-inventor-51515)
-with the [NVIDIA Jetson Nano 2GB](https://developer.nvidia.com/embedded/jetson-nano-2gb-developer-kit).
-Via a serial connection, using Bluetooth or a micro USB cable, the Jetson Nano will be able to control the Mindstorms Hub.
-
-## LEGO Mindstorms 51515
-On October 15, 2020, LEGO launched the Mindstorms 51515 Robot Inventor kit. It is the fourth generation
-of the LEGO Mindstorms coding system and has the following features:
-* 5x5 LED matrix
-* Bluetooth connectivity
-* Gyro/accelerometer 6 axes
-* Speaker
-* Light/Color sensor
-* Distance sensor
-* 4 low-profile, medium-angle motors with an integrated absolute-positioning rotation sensor
-
-![lego-mindstorms](img/51515.jpg)
-
-## NVIDIA Jetson Nano 2GB
-At the end of October 2020, NVIDIA introduced the Jetson Nano 2GB Developer Kit. It includes a Jetson Nano module with 2 GB
-memory and delivers 472 GFLOPS of compute performance with a 128-core NVIDIA Maxwell GPU and 64-bit Quad-core Arm A57 CPU.
-Using the USB ports of the Jetson Nano, we can also add extra devices, such as a camera, microphone and speaker.
-The MIPI CSI-2 connector can also be used to add a camera.
-
-![jetson-nano](img/jetson-nano-enthusiast-2gb-dev-kit-2c50-d.jpg)
-> WARNING: **The heatsink gets hot!**
-
-## Python programming 
-Normally, the LEGO Mindstorms can be programmed with [Scratch](https://scratch.mit.edu/about/) or 
-[MicroPython](http://www.micropython.org/).
-With MicroPython, it is possible to execute Python scripts remotely.
-In this project, we use the latter technique in order to control the LEGO Mindstorms from the Jetson Nano. 
-
-## Combining with the Jetson Nano
-By combining the LEGO Mindstorms with the Jetson Nano, we can potentially leverage the GPU power
-of the Jetson Nano for more complex tasks, for example face recognition. 
-In a [previous project](https://github.com/beemsoft/lb_jn), this has been implemented together with
-the LEGO Boost.
-
-Due to the small size, Charlie the robot can easily carry the Jetson Nano on it's back.
-By adding a few LEGO bricks from the LEGO Mindstorms box, the Jetson Nano can be attached
-and even be complemented with a Power bank for standalone operation.
-
-Since the following demo is not requiring a GPU, you could also use another type of Single Board Computer.
-
-### Kernel recompilation
-For communicating with the LEGO Hub, serial communication will be used. Unfortunately, the Jetson Nano
-has an issue with this: [RFCOMM TTY support not available](https://forums.developer.nvidia.com/t/jetson-nano-bluetooth-issue-rfcomm-tty-support-not-available/81432).
-As described on the linked page, this requires the Linux kernel to be recompiled on the Jetson Nano.
-
 ## Text recognition (OCR) demo with Charlie
 In this demo, Charlie will read Chinese sentences from a piece of paper.
 When the piece of paper is within a distance of 20 centimeters, Charlie will
@@ -56,12 +5,11 @@ try to read the sentence. If the text is recognized, Charlie will repeat it in C
 After that, Charlie will translate the text to English and display it on the LED matrix.
 Finally, Charlie will speak out the English translation.
 
-### Demo's
-* Chinese speech recoginition (OCR) demo
-* Face recognition demo
+### Demo video
+[![demo-video](img/video1.jpg)](https://youtu.be/AtLgXSPTPT8)
 
 ### Extra required hardware
-A few accessory hardware items are required for running the demo's.
+A few accessory hardware items are required for running the demo.
 
 #### HDMI monitor
 You need an HDMI monitor for starting up the demo from the desktop.
